@@ -1,8 +1,12 @@
-const numElement = 25;
+import { getImageTag } from './getImageTag.js';
+const numElement = 26;
+const countlikes = { min: 15, max: 200 };
+const countComments = { min: 2, max: 8 };
+let countIdStart = 22;
 const decsPictArr = [
-	'Lord', 'Riding a dragon', 'disappeared', 'Life Support', 'Darth Vader', 'NLAW&man', 'Starship', 'Space suit', 'Darth Maul', 'Crash',
-	"God's touch", 'Raincoat', 'Car', 'Crash engine', 'Space suit', 'NLAW&woman', 'UA army', 'Space train', 'Robot', 'Factory wreckage',
-	'Minibus', 'beam sword', 'In laboratory', 'Big head', 'spaceport']
+	'Володарь', 'Верхи на драконі', 'Зникнув', 'Підтримка', 'Darth Vader', 'NLAW & чоловік', 'Зірковий корабель', 'Косміний Скафандр', 'Darth Maul', 'Кораблекрушение',
+	"Підтримка", 'Плащ', 'Авто', 'Великий двигун', 'Протигаз', 'NLAW & жінка', 'Військо', 'Потяг', 'Робот', 'Уламки заводу',
+	'Мікроавтобус', 'Променевий меч', 'В лабораторії', 'Велика голова', 'Космодром'];
 const messageArr = [
 	'Все відмінно!',
 	'Загалом все непогано. Але не всі.',
@@ -10,18 +14,46 @@ const messageArr = [
 	'Моя бабуся випадково чхнула з фотоапаратом у руках і у неї вийшла фотографія краща.',
 	'Я послизнувся на банановій шкірці і впустив фотоапарат на кота і у мене вийшла фотографія краще.',
 	'Обличчя людей на фотці перекошені, ніби їх побивають. Як можна було зловити такий невдалий момент?'
-]
+];
+const avatarArr = [
+	'Арагорн', 'Родогаст', 'Родомир', 'Фродо', 'Елронд', 'Гендальф'
+] //'Олена', 'Василій', 'Василіса', 'Петро', 'Андрій', 'Сергій', 
 
-const arrPhoto = new Array(numElement).fill(null).map((_, i) => {
+function getRamdomNum(rangeMin, rangeMax) {
+	return Math.floor((Math.random() * (rangeMax - rangeMin) + rangeMin));
+}
+
+function incrementCountId() {
+	countIdStart += 1;
+	return countIdStart;
+}
+
+function getMessageArr() {
+	return messageArr[getRamdomNum(0, messageArr.length - 1)];
+}
+
+function getCommentsArr() {
+	const countRndComments = getRamdomNum(countComments.min, countComments.max);
+	const tempCommentsArr = new Array(countRndComments).fill(null).map(() => {
+		const curAvatarTemp = getRamdomNum(0, avatarArr.length);
+		return {
+			id: incrementCountId(),
+			avatar: `./img/avatar-${curAvatarTemp}.svg`,
+			name: avatarArr[curAvatarTemp],
+			message: getMessageArr()
+		}
+	});
+	return tempCommentsArr;
+}
+
+const photosArr = new Array(numElement).fill(null).map((_, i) => {
 	return {
-		id: Number(i + 1),
-		url: `photos/${i + 1}.jpg`,
+		id: incrementCountId(),
+		url: `./photos/${i + 1}.jpg`,
 		descriptions: decsPictArr[i],
-		likes: ramdonNum(15, 200),
-		comments: messageArr[ramdonNum(0, messageArr.length - 1)]
+		likes: getRamdomNum(countlikes.min, countlikes.max),
+		comments: getCommentsArr()
 	}
 })
 
-function ramdonNum(rangeMin, rangeMax) {
-	return (Math.random() * (rangeMax - rangeMin) + rangeMin).toFixed(0);
-}
+getImageTag(photosArr);

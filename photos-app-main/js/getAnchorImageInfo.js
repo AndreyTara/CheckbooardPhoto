@@ -1,5 +1,6 @@
 export function getAnchorImageInfo(clickPhoto) {
 
+
 	function getCountComments(currentCount, allCount) {
 		if (allCount > currentCount) {
 			commentsShown.textContent = allCount;

@@ -1,5 +1,8 @@
 import { insertAnchorImageTags } from './insertImageTag.js';
 import { getAnchorImageInfo } from './getAnchorImageInfo.js';
+import { showBigFoto } from './showBigFoto.js';
+
+//showBigFoto
 const arrayLengthPictures = 25;
 const rangeOfLikes = { min: 15, max: 200 };
 const rangeOfComments = { min: 1, max: 20 };
@@ -69,29 +72,39 @@ for (let i = 0; i < arrayLengthPictures; i++) {
 // insertAnchorImageTags
 insertAnchorImageTags(photoConfigs);
 
-// getAnchorImageInfo
+getAnchorImageInfo
+const bodyTag = document.querySelector('.body');
+
 const bigPictures = document.querySelector('.big-picture');
-const zonePicture = document.querySelector('.pictures')
-zonePicture.addEventListener('click', (evt) => {
+const zonePictures = document.querySelector('.pictures')
+zonePictures.addEventListener('click', (evt) => {
+	if (!evt.target.classList.contains("picture__img")) return
 	bigPictures.classList.remove("hidden");
-	document.body.style.position = 'fixed';
+	bodyTag.classList.add('modal-open');
 	const clickFotoId = +evt.target.dataset.id
 	const clickPhoto = photoConfigs.find((el) => el.id === clickFotoId);
 	getAnchorImageInfo(clickPhoto);
 })
-
 const zonePictureCancel = document.querySelector('.big-picture__cancel')
 zonePictureCancel.addEventListener('click', (evt) => {
 	const clickCancel = evt.target
 	if (clickCancel) {
 		bigPictures.classList.add("hidden");
-		document.body.style.position = '';
+		bodyTag.classList.remove('modal-open');
 	}
 });
 
 document.addEventListener('keydown', function (event) {
 	if (event.key === 'Escape') {
 		bigPictures.classList.add("hidden");
-		document.body.style.position = '';
+		bodyTag.classList.remove('modal-open');
 	}
 });
+
+//addBigImageClickUpload
+const uploadBtn = document.querySelector('#upload-file')
+uploadBtn.addEventListener('change', function () {
+	showBigFoto()
+})
+
+

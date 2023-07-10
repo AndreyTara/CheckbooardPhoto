@@ -1,4 +1,4 @@
-export function insertBigFotoFn(constToinsertBigFotoFn) {
+export function insertBigFotoFn(constToInsertBigFotoFn) {
 	const [
 		textDescription,
 		imgUploadOverlay,
@@ -7,8 +7,20 @@ export function insertBigFotoFn(constToinsertBigFotoFn) {
 		arrHashtagMaxLength,
 		hashtagLengthMax,
 		messagesValidText,
-		textHashtags
-	] = constToinsertBigFotoFn
+		textHashtags,
+		scaleControlValue,
+		tagScaleControlPreview,
+		slider
+	] = constToInsertBigFotoFn
+
+	scaleControlValue.value = `${100}%`;
+	tagScaleControlPreview.style.transform = `scale(1)`; // restart scale then start page,
+	if (slider.noUiSlider) { // // restart slider then start page
+		slider.noUiSlider.destroy();
+	}
+	tagScaleControlPreview.removeAttribute("class");
+	tagScaleControlPreview.classList = `none`;
+	tagScaleControlPreview.style.filter = `none`;
 
 	textDescription.setAttribute('maxlength', 140);
 

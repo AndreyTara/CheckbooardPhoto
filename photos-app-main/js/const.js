@@ -58,7 +58,7 @@ export const constForGetAnchorImageInfo = [
 	bigPictureSocialComments
 ]
 
-export const uploadBtn = document.querySelector('#upload-file')
+export const uploadBtn = document.querySelector('#upload-file');
 
 //heshtag
 const textDescription = document.querySelector('.text__description');
@@ -77,6 +77,11 @@ const messagesValidText = {
 }
 const textHashtags = document.querySelector('.text__hashtags');
 
+
+const tagScaleControlPreview = document.querySelector('.img-upload__preview').querySelector('img');
+const tagScaleControlValue = document.querySelector('.scale__control--value');
+const slider = document.querySelector('#slider');
+
 export const constToInsertBigFotoFn = [
 	textDescription,
 	imgUploadOverlay,
@@ -85,5 +90,44 @@ export const constToInsertBigFotoFn = [
 	arrHashtagMaxLength,
 	hashtagLengthMax,
 	messagesValidText,
-	textHashtags
-] 
+	textHashtags,
+	tagScaleControlValue,
+	tagScaleControlPreview,
+	slider
+]
+
+const tagScaleContainer = document.querySelector('.img-upload__scale');
+const tagScaleControlSmaller = document.querySelector('.scale__control--smaller');
+const tagScaleControlBigger = document.querySelector('.scale__control--bigger');
+const scaleRangeValue = {
+	max: 100,
+	min: 25,
+	step: 25
+}
+export const enterScaleControl = [
+	tagScaleContainer,
+	tagScaleControlSmaller,
+	tagScaleControlBigger,
+	tagScaleControlValue,
+	tagScaleControlPreview,
+	scaleRangeValue
+]
+
+
+
+
+const effectFilter = {
+	'effect-none': { min: "", max: "", step: "", classAdd: 'none', filter: 'none', countFilter: 'none' },
+	'effect-chrome': { min: 0, max: 1, step: 0.1, classAdd: 'effects__preview--chrome', filter: 'grayscale', countFilter: '' },
+	'effect-sepia': { min: 0, max: 1, step: 0.1, classAdd: 'effects__preview--sepia', filter: 'sepia', countFilter: '' },
+	'effect-marvin': { min: 0, max: 100, step: 1, classAdd: 'effects__preview--marvin', filter: 'invert', countFilter: '%' },
+	'effect-phobos': { min: 0, max: 3, step: 0.1, classAdd: 'effects__preview--phobos', filter: 'blur', countFilter: 'px' },
+	'effect-heat': { min: 1, max: 3, step: 0.1, classAdd: 'effects__preview--heat', filter: 'brightness', countFilter: '' }
+}
+
+export const enterEffectControl = [
+	effectFilter,
+	tagScaleControlPreview,
+	slider,
+	tagScaleControlValue,
+]

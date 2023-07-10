@@ -4,7 +4,7 @@ export function getRandomNumber(rangeMin, rangeMax) {
 
 export function getMessage(messages) {
 	const messageId = getRandomNumber(0, messages.length - 1)
-	
+
 	return messages[messageId];
 
 }
@@ -49,4 +49,3 @@ export function getMockData(arrayLengthPictures, rangeOfLikes, rangeOfComments, 
 	}
 	return photoConfigs
 }
-

@@ -13,7 +13,7 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 		slider
 	] = constToInsertBigFotoFn
 
-	scaleControlValue.value = `${100}%`;
+	scaleControlValue.value = `${100}%`;// restart value scale then start page,
 	tagScaleControlPreview.style.transform = `scale(1)`; // restart scale then start page,
 	if (slider.noUiSlider) { // // restart slider then start page
 		slider.noUiSlider.destroy();
@@ -35,20 +35,18 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 	})
 
 	document.addEventListener('keydown', function (event) {
-		if (event.key === 'Escape') {
+		if (event.key === 'Escape') { ///event.key.code == 27
 			imgUploadOverlay.classList.add("hidden");
 			bodyTag.classList.remove('modal-open');
+			return
 		}
+		// const withinBoundaries = e.composedPath().includes(tagScaleControlPreview); // CLICK IN OTHER SPACE no current window
+		// if (!withinBoundaries) {
+		// 	imgUploadOverlay.classList.add("hidden");
+		// 	bodyTag.classList.remove('modal-open');
+		// 	return
+		// }
 	});
-
-	function isElementNumAndStrFn(str) {
-		return /^[A-Z0-9А-ЯІЇЁЄҐъыь'Єє#]+$/i.test(str)
-	}
-
-	function setCustomValidityInText(outputText) {
-		textHashtags.setCustomValidity(outputText);
-		textHashtags.reportValidity();
-	}
 
 	// const eng = 'AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz'
 	// const ukr = "АаБбВвГгҐґДдЕеЄєЖжЗзИиІіЇїЙйКкЛлМмНнОоПпРрСсТтУуФфХхЦцЧчШшЩщьЮюЯя'"
@@ -58,6 +56,7 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 	//text__hashtags
 	textHashtags.addEventListener('input', (evt) => {
 		const inputTextHashtags = evt.target.value;
+		// if (inputTextHashtags === '') return // add empty hashtag
 		let arrTextHashtags = inputTextHashtags
 			.split(' ') 											//split to space
 			.map(el => el.toLowerCase()) 			//lower case
@@ -70,6 +69,10 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 			return /^[A-Z0-9А-ЯІЇЁЄҐъыь'Єє]+$/i.test(str)//return (boolean)
 		}
 
+		function setCustomValidityInText(outputText) {
+			textHashtags.setCustomValidity(outputText);
+			textHashtags.reportValidity();
+		}
 		function isValidArrayOfHashtags(arrayOfHashtags) {
 			let isArrLengthZero = (arrayOfHashtags.length === 0); //blocker str without #(heshtag)
 			let isStartToHashtag = null;
@@ -80,7 +83,7 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 				} else {
 					const temp = element.slice(1);
 					if (!isElementHashFn(temp)) {
-						console.log(isElementHashFn(temp));
+						// console.log(isElementHashFn(temp));
 						isHashtagDuble = true;
 					}
 				}
@@ -125,5 +128,6 @@ export function insertBigFotoFn(constToInsertBigFotoFn) {
 			}
 		}
 	})
+
 }
 

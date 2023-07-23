@@ -1,6 +1,8 @@
 export const url = {
 	photos: 'http://localhost:4001/photos',
-	comments: 'http://localhost:4001/comments'
+	comments: 'http://localhost:4001/comments',
+	uploads: 'http://localhost:4001/uploads',
+	gram: 'http://localhost:4001/gram',
 }
 
 export const arrayLengthPictures = 25;
@@ -130,4 +132,24 @@ export const enterEffectControl = [
 	tagScaleControlPreview,
 	slider,
 	tagScaleControlValue,
+]
+
+const uploadSelectImage = document.querySelector('#upload-select-image'); //Forma
+const uploadFile = document.querySelector('#upload-file');
+const uploadPictureBlock = document.querySelector('.img-upload__overlay');
+const body = document.querySelector('.body');
+const imgUploadInput = document.querySelector('.img-upload__label');
+const uploadSubmitBtn = document.querySelector('#upload-submit');
+const uploadedImage = document.querySelector('.img-upload__preview').querySelector('img');
+// const API_ENDPOINT = url.uploads;
+
+export const enterImageUpload = [
+	uploadSelectImage,
+	uploadFile,
+	uploadPictureBlock,
+	body,
+	imgUploadInput,
+	uploadSubmitBtn,
+	uploadedImage
+	// API_ENDPOINT
 ]

@@ -2,13 +2,11 @@
 // import { getMockData } from './utils.js';
 
 import { getDataInfo } from './getDataInfo.js';
-import { insertAnchorImageTags } from './insertImageTag.js';
+import { insertAnchorImageTags } from './showMiniPhoto.js';
 import { getAnchorImageInfoFn } from './getAnchorImageInfo.js';
-import { insertBigFotoFn } from './insertBigFoto.js';
+import { insertBigFotoFn } from './showBigFoto.js';
 import { scaleControlFn, effectControlFn } from './insertImageStyle.js';
-// import noUiSlider from '../node_modules/nouislider/dist/nouislider.mjs';
-// import * as noUiSlider from 'nouislider';
-// import 'nouislider/dist/nouislider.css';
+import { imageUpload } from './imageUpload.js';
 
 import {
 	url,
@@ -19,7 +17,8 @@ import {
 	uploadBtn,
 	constToInsertBigFotoFn,
 	enterScaleControl,
-	enterEffectControl
+	enterEffectControl,
+	enterImageUpload
 } from './const.js';
 
 //get elements from showMockData
@@ -41,10 +40,14 @@ getAnchorImageInfoFn(await photosConfigs, constForGetAnchorImageInfoFn, constFor
 // addBigImageClickUpload
 uploadBtn.addEventListener('change', function () {
 	insertBigFotoFn(constToInsertBigFotoFn)
+
+	// // addStyleImageClickUpload
+	// insertImageStyleFn(enterScaleControl, enterEffectControl, noUiSlider);
+	scaleControlFn(enterScaleControl);
+	effectControlFn(enterEffectControl);
+
+	// add upload to 'photo'
+	imageUpload(enterImageUpload);
 })
 
 
-// // addStyleImageClickUpload
-// insertImageStyleFn(enterScaleControl, enterEffectControl, noUiSlider);
-scaleControlFn(enterScaleControl);
-effectControlFn(enterEffectControl);

@@ -90,6 +90,7 @@ export function effectControlFn(enterEffectControlfn) {
 
 			slider.noUiSlider.on('update', function (values, handle) {
 				const tempFilter = `${result.filter}(${values[handle]}${result.countFilter})`
+				efffectLabelValue.value = values[handle]
 				tagScaleControlPreview.style.filter = tempFilter;
 			});
 		}
@@ -97,70 +98,6 @@ export function effectControlFn(enterEffectControlfn) {
 }
 
 
-
-
-// console.log('scaleControlPreview', scaleControlPreview);
-			// slider.querySelector('.noUi-connects').style.background = 'aqua';
-			// slider.classList.add('.effect-level');
-			// scaleControlPreview.classList = result.classAdd;
-			// if (!slider.noUiSlider) {
-			// nouislider.create(slider, {
-			// 	start: 100,
-			// 	range: { min: 0, max: 100 },
-			// 	step: 1,
-			// 	format: {
-			// 		to}
-			// })
-			// } else {
-			// 	slider.noUiSlider.updateOptions({
-			// 		start: 50,
-			// 		range: { min: 0, max: 76 },
-			// 		step: 2
-			// 	})
-			// }
-// export function insertImageStyleFn(enterScaleControl, enterEffectControl) { ////, nouislider , noUiSlider
-// 	scaleControlFn(enterScaleControl);
-// 	// console.log(enterEffectControl)
-// 	// effectControlFn(enterEffectControl);
-// }
-
-	// createSlider('add', result)
-	// 		switch (asd) {
-	// 			case 'effect-none':
-	// 				console.log('none')
-	// 				break;
-	// 			case 'effect-chrome':
-	// 				// scaleControlPreview.style.filter = `grayscale(${1})`;
-	// 				scaleControlPreview.add('effects__preview--chrome');
-	// 				console.log('chrome')
-	// 				break;
-	// 			case 'effect-sepia':
-	// 				scaleControlPreview.add('effects__preview--sepia');
-	// 				console.log('sepia')
-	// 				break;
-	// 			case 'effect-marvin':
-	// 				scaleControlPreview.add('effects__preview--marvin');
-	// 				console.log('marvin')
-	// 				break;
-	// 			case 'effect-phobos':
-	// 				scaleControlPreview.add('effects__preview--phobos');
-	// 				console.log('phobos')
-	// 				break;
-	// 			case 'effect-heat':
-	// 				scaleControlPreview.add('effects__preview--heat');
-	// 				console.log('heat')
-	// 				break;
-	// 			default:
-	// 				break;
-	// 		}
-	// 			const sliderEfeect = document.querySelector('#slider');
-	// 	// console.log(slider1);
-	// 	// // // // const value = {
-	// 		// // // // 	startValue: 100,
-	// 		// // // // 	rangeMin: 0,
-	// 	// // // // 	rangeMax: 100,
-	// 	// // // // 	stepCount: 1
-	// 	// // // // }
 	// 	noUiSlider.create(sliderEfeect, {
 	// 		start: 50,
 	// 		connect: true,

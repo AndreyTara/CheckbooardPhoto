@@ -153,3 +153,23 @@ export const enterImageUpload = [
 	uploadedImage
 	// API_ENDPOINT
 ]
+
+const imgFiltersForm = document.querySelector(".img-filters__form");
+const imgFilters = document.querySelector(".img-filters");
+const filterDiscussedBtn = document.querySelector("#filter-discussed");
+const filterDefaultBtn = document.querySelector("#filter-default");
+const filterRandomBtn = document.querySelector("#filter-random");
+const limitRamdomArrLenght = 10;
+const timeToDebounsing = 500;
+
+export const enterAddFilter = [
+	imageInsertionTarget,
+	pictureTemplate,
+	imgFiltersForm,
+	imgFilters,
+	filterDiscussedBtn,
+	filterDefaultBtn,
+	filterRandomBtn,
+	limitRamdomArrLenght,
+	timeToDebounsing
+]

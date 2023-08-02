@@ -7,6 +7,7 @@ import { getAnchorImageInfoFn } from './getAnchorImageInfo.js';
 import { insertBigFotoFn } from './showBigFoto.js';
 import { scaleControlFn, effectControlFn } from './insertImageStyle.js';
 import { imageUpload } from './imageUpload.js';
+import { addFilter } from './addFilter.js';
 
 import {
 	url,
@@ -18,7 +19,8 @@ import {
 	constToInsertBigFotoFn,
 	enterScaleControl,
 	enterEffectControl,
-	enterImageUpload
+	enterImageUpload,
+
 } from './const.js';
 
 //get elements from showMockData
@@ -51,3 +53,4 @@ uploadBtn.addEventListener('change', function () {
 })
 
 
+addFilter(await photosConfigs);
